@@ -13,6 +13,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+
+        $this->call(array(
+
+            EspectadorSeeder::class,
+
+            StatusSeeder::class,
+
+            SerieSeeder::class,
+
+            Servico_stremingSeeder::class,
+
+            Servico_streming_has_espectadorSeeder::class,
+
+            EspectadorhasSerieSeeder::class
+
+        ));
+
     }
 }
