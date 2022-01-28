@@ -18,7 +18,7 @@ class Servico_stremingSeeder extends Seeder
         DB::table('servico_streming')->insert([
             'nome' => 'netfilx',
             'created_at' =>'2022-01-28 9',
-            'updated_at' => Carbon::now()->subDays(35),
+            'updated_at' => Carbon::now(),
         ]);
 
     }

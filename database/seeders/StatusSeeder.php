@@ -17,8 +17,8 @@ class StatusSeeder extends Seeder
     {
         DB::table('status')->insert([
             'status' => 'cancelada',
-            'created_at' =>'1975-05-23 22',
-            'updated_at' => Carbon::now()->subDays(35),
+            'created_at' =>'2022-01-28 9',
+            'updated_at' => Carbon::now(),
 
         ]);
 

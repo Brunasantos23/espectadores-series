@@ -16,7 +16,7 @@ class CreateEspectadorHasSeriesTable extends Migration
         Schema::create('espectador_has_series', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('status_id')->constrained('status');
+            $table->foreignId('serie_id')->constrained('serie');
 
             $table->foreignId('espectador_id')->constrained('espectador');
 

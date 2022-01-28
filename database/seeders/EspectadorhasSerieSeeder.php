@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class SerieSeeder extends Seeder
+class EspectadorhasSerieSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,13 +15,12 @@ class SerieSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('series')->insert([
-            'nome' => 'gilmore girls',
-            'quant_temp' => 7,
-            'genero' => 'comedia',
-            'status_id' => 2,
+        DB::table('espectador_has_series')->insert([
+            'serie_id' => 1,
+            'espectador_id' => 4,
             'created_at' =>'2022-01-28 9',
             'updated_at' => Carbon::now(),
         ]);
+
     }
 }

@@ -18,16 +18,16 @@ class EspectadorSeeder extends Seeder
         DB::table('espectadores')->insert([
             'nome' => 'cecilia',
             'idade' => 1,
-            'created_at' =>'1975-05-23 22',
-            'updated_at' => Carbon::now()->subDays(35),
+            'created_at' =>'2022-01-28 9',
+            'updated_at' => Carbon::now(),
 
         ]);
 
         DB::table('espectadores')->insert([
             'nome' => 'monique',
             'idade' => 3,
-            'created_at' =>'1975-06-21 22',
-            'updated_at' => Carbon::now()->subDays(35),
+            'created_at' =>'2022-01-28 9',
+            'updated_at' => Carbon::now(),
 
         ]);
     }
