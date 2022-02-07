@@ -22,5 +22,21 @@ class StatusSeeder extends Seeder
 
         ]);
 
+        DB::table('status')->insert([
+            'status' => 'em andamento',
+            'created_at' =>'2022-02-07 9:30',
+            'updated_at' => Carbon::now(),
+
+        ]);
+
+        DB::table('status')->insert([
+            'status' => 'finalizada',
+            'created_at' =>'2022-02-07 9:30',
+            'updated_at' => Carbon::now(),
+
+        ]);
+
+
+
     }
 }
