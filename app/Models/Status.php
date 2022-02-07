@@ -22,4 +22,11 @@ class Status extends Model
      * @var array
     */
     protected $guarded = [];
+
+    public function serieRelationship(){
+        /**
+         * Get the post that owns the comment.
+        */
+        return $this->belongsTo(Status::class, 'status_id', 'id');
+    }
 }

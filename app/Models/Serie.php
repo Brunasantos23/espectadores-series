@@ -22,4 +22,18 @@ class Serie extends Model
      * @var array
     */
     protected $guarded = [];
+
+    public function statusRelationship(){
+        return $this->hasMany(Status::class, 'status_id', 'id');
+    }
+
+    public function espectadorRelationship()
+    {
+        return $this->belongsToMany(Espectador::class, 'espectador_has_servico_streming', 'espectador_id', 'serie_id');
+    }
+
+    public function servicoRelationship()
+    {
+        return $this->belongsToMany(ServicoStreming::class, 'servico_streming_has_serie', 'servico_streming_id', 'serie_id');
+    }
 }

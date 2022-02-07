@@ -22,4 +22,19 @@ class Espectador extends Model
      * @var array
     */
     protected $guarded = [];
+
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function servicoRelationship()
+    {
+        return $this->belongsToMany(ServicoStreming::class, 'espectador_has_servico_streming', 'servico_streming_id', 'espectador_id');
+    }
+
+    public function serieRelationship()
+    {
+        return $this->belongsToMany(Serie::class, 'espectador_has_serie', 'serie_id', 'espectador_id');
+    }
+
 }
