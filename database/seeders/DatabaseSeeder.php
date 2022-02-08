@@ -26,7 +26,9 @@ class DatabaseSeeder extends Seeder
 
             Servico_streming_has_espectadorSeeder::class,
 
-            EspectadorhasSerieSeeder::class
+            EspectadorhasSerieSeeder::class,
+
+            Serie_has_servico_streamingSeeder::class
 
         ));
 
