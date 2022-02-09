@@ -13,16 +13,20 @@ class StatusController extends Controller
 {
 
    public function teste(){
-        dd(Status::find(2)->serie->first()->nome);
+       $teste = Serie::find(1);
+    //    dd($teste);
+       return view('teste', compact('teste'));
     }
 
     public function teste2(){
-       dd(Espectador::find(1)->serie,Espectador::find(1)->servico);
+        $teste = Espectador::find(1);
+        return view('teste', compact('teste'));
 
     }
 
     public function teste3(){
-        dd(ServicoStreming::find(1)->espectador,ServicoStreming::find(1)->serie);
+        $teste = ServicoStreming::find(1);
+        return view('teste', compact('teste'));
     }
 
     public function teste4(){

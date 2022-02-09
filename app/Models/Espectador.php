@@ -13,33 +13,80 @@ class Espectador extends Model
      * The table associated with the model.
      *
      * @var string
-    */
+     */
     protected $table = 'espectadores';
 
     /**
      * The attributes that aren't mass assignable.
      *
      * @var array
-    */
+     */
     protected $guarded = [];
+
+
+    /**
+     * Get the serie's .
+     *
+     * @return
+     */
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'serieRelationship',
+        'servicoRelationship',
+        'pivot',
+
+    ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+
+    protected $appends = [
+        'serie',
+        
+
+    ];
 
     public function getSerieAttribute(){
         return $this->serieRelationship;
 
     }
 
+    /**
+     * Get the servico's .
+     *
+     * @return
+     */
     public function getServicoAttribute(){
         return $this->servicoRelationship;
     }
 
-    /**
-     * The roles that belong to the user.
+     /**
+     * Get the servico that owns the servico.
+     *
+     * @return Servico
      */
 
     public function servicoRelationship()
     {
         return $this->belongsToMany(ServicoStreming::class, 'espectador_has_servico_streaming', 'espectador_id','servico_streaming_id');
     }
+
+    /**
+     * Get the serie that owns the serie.
+     *
+     * @return Serie
+     */
 
     public function serieRelationship()
     {
