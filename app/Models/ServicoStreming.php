@@ -16,6 +16,17 @@ class ServicoStreming extends Model
     */
     protected $table = 'servico_streming';
 
+
+    public function getEspectadorAttribute(){
+        return $this->espectadorRelationship;
+
+    }
+
+    public function getSerieAttribute(){
+        return $this->serieRelationship;
+
+    }
+
     /**
      * The attributes that aren't mass assignable.
      *
@@ -25,11 +36,11 @@ class ServicoStreming extends Model
 
     public function espectadorRelationship()
     {
-        return $this->belongsToMany(Espectador::class, 'espectador_has_servico_streming', 'espectador_id', 'servico_streming_id');
+        return $this->belongsToMany(Espectador::class, 'espectador_has_servico_streaming', 'servico_streaming_id','espectador_id');
     }
 
     public function serieRelationship()
     {
-        return $this->belongsToMany(Serie::class, 'servico_streming_has_serie', 'serie_id', 'servico_streming_id');
+        return $this->belongsToMany(Serie::class, 'series_has_servico_streaming','servico_streaming_id', 'series_id');
     }
 }

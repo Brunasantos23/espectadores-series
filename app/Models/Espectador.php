@@ -23,18 +23,29 @@ class Espectador extends Model
     */
     protected $guarded = [];
 
+    public function getSerieAttribute(){
+        return $this->serieRelationship;
+
+    }
+
+    public function getServicoAttribute(){
+        return $this->servicoRelationship;
+    }
 
     /**
      * The roles that belong to the user.
      */
+
     public function servicoRelationship()
     {
-        return $this->belongsToMany(ServicoStreming::class, 'espectador_has_servico_streming', 'servico_streming_id', 'espectador_id');
+        return $this->belongsToMany(ServicoStreming::class, 'espectador_has_servico_streaming', 'espectador_id','servico_streaming_id');
     }
 
     public function serieRelationship()
     {
-        return $this->belongsToMany(Serie::class, 'espectador_has_serie', 'serie_id', 'espectador_id');
+        return $this->belongsToMany(Serie::class, 'espectador_has_series', 'espectador_id', 'serie_id');
     }
+
+
 
 }

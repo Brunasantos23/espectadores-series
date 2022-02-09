@@ -16,6 +16,11 @@ class Status extends Model
     */
     protected $table = 'status';
 
+    public function getSerieAttribute(){
+        return $this->serieRelationship;
+
+    }
+
     /**
      * The attributes that aren't mass assignable.
      *
@@ -23,10 +28,12 @@ class Status extends Model
     */
     protected $guarded = [];
 
+    /**
+     * Get the post that owns the comment.
+    */
+
     public function serieRelationship(){
-        /**
-         * Get the post that owns the comment.
-        */
-        return $this->belongsTo(Status::class, 'status_id', 'id');
+
+        return $this->hasMany(Serie::class, 'status_id', 'id');
     }
 }

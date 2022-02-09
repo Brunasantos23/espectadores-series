@@ -16,6 +16,27 @@ class Serie extends Model
     */
     protected $table = 'series';
 
+    public function getStatusAttribute(){
+        return $this->statusRelationship;
+
+    }
+
+    public function getEspectadorAttribute(){
+        return $this->espectadorRelationship;
+
+    }
+
+    public function getServicoAttribute(){
+        return $this->servicoRelationship;
+
+    }
+
+    public function setNomeAttribute($value){
+        $this->attributes['nome'] = strtoupper($value);
+
+    }
+
+
     /**
      * The attributes that aren't mass assignable.
      *
@@ -24,16 +45,16 @@ class Serie extends Model
     protected $guarded = [];
 
     public function statusRelationship(){
-        return $this->hasMany(Status::class, 'status_id', 'id');
+        return $this->belongsTo(Status::class, 'status_id', 'id');
     }
 
     public function espectadorRelationship()
     {
-        return $this->belongsToMany(Espectador::class, 'espectador_has_servico_streming', 'espectador_id', 'serie_id');
+        return $this->belongsToMany(Espectador::class, 'espectador_has_series', 'serie_id', 'espectador_id');
     }
 
     public function servicoRelationship()
     {
-        return $this->belongsToMany(ServicoStreming::class, 'servico_streming_has_serie', 'servico_streming_id', 'serie_id');
+        return $this->belongsToMany(ServicoStreming::class, 'series_has_servico_streaming', 'series_id', 'servico_streaming_id');
     }
 }
