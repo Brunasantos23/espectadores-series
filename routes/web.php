@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StatusController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('teste',[StatusController::class, 'teste']);
+
+Route::get('teste2',[StatusController::class, 'teste2']);
+
+Route::get('teste3',[StatusController::class, 'teste3']);
+
+Route::get('teste4',[StatusController::class, 'teste4']);
