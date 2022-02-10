@@ -31,10 +31,14 @@ Route::get('teste4',[StatusController::class, 'teste4']);
 
 Route::get('index',[EspectadorController::class, 'index']);
 
-Route::get('show/{id}',[EspectadorController::class, 'show']);
+Route::get('show/{id}',[EspectadorController::class, 'show'])->name('espectador.show');
 
 Route::delete('destroy/{id}',[EspectadorController::class, 'destroy']);
 
 Route::get('form',[EspectadorController::class, 'create']);
 
 Route::get('form/{id}',[EspectadorController::class, 'edit']);
+
+Route::get('form/{id}',[EspectadorController::class, 'edit']);
+
+Route::post('store',[EspectadorController::class, 'store'])->name('espectador.store');

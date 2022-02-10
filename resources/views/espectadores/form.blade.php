@@ -5,15 +5,19 @@
     </head>
     <body>
 
-         <form  method="POST" action="#" name="form">
+         <form  method="POST" action="{{ route('espectador.store') }}" name="form">
+
+            @csrf
 
              <div>
 
                  <label for="nome">Nome:</label>
-                 <input type="text"  value="{{$espectadores->nome??''}}" id="nome"><br/>
+                 <input type="text"  value="{{$espectadores->nome??''}}" id="nome" name="nome"><br/>
 
                  <label for="idade">Idade:</label>
-                 <input type="int" value="{{$espectadores->idade??''}}" id="idade">
+                 <input type="int" value="{{$espectadores->idade??''}}" id="idade" name="idade"><br/>
+
+                 <input type="submit" value="Enviar">
 
              </div>
 
