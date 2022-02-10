@@ -55,7 +55,11 @@ class EspectadorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $espectador = $this->espectadores->create(array(
+           'nome'=>$request->nome ,
+           'idade'=>$request->idade));
+           return redirect()->route('espectador.show',$espectador->id);
+
     }
 
     /**
@@ -67,7 +71,7 @@ class EspectadorController extends Controller
     public function show($id)
     {
         $espectadores = $this->espectadores->find($id);
-        return $espectadores;
+        return view('espectadores.form', compact('espectadores')); 
     }
 
     /**
