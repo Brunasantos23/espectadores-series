@@ -34,3 +34,5 @@ Route::get('index',[EspectadorController::class, 'index']);
 Route::get('show/{id}',[EspectadorController::class, 'show']);
 
 Route::delete('destroy/{id}',[EspectadorController::class, 'destroy']);
+
+Route::get('form',[EspectadorController::class, 'create']);

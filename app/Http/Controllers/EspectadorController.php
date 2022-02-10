@@ -30,7 +30,9 @@ class EspectadorController extends Controller
      public function index()
     {
         $espectadores = $this->espectadores->all();
-        return $espectadores;
+        return view('espectadores.index', compact('espectadores'));
+
+
 
     }
 
@@ -41,7 +43,8 @@ class EspectadorController extends Controller
      */
     public function create()
     {
-        //
+        return view('espectadores.form');
+
     }
 
     /**
