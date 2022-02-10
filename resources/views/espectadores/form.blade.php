@@ -10,10 +10,10 @@
              <div>
 
                  <label for="nome">Nome:</label>
-                 <input type="text" id="nome"><br/>
+                 <input type="text"  value="{{$espectadores->nome??''}}" id="nome"><br/>
 
                  <label for="idade">Idade:</label>
-                 <input type="int" id="idade">
+                 <input type="int" value="{{$espectadores->idade??''}}" id="idade">
 
              </div>
 
