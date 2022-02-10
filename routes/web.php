@@ -32,3 +32,5 @@ Route::get('teste4',[StatusController::class, 'teste4']);
 Route::get('index',[EspectadorController::class, 'index']);
 
 Route::get('show/{id}',[EspectadorController::class, 'show']);
+
+Route::delete('destroy/{id}',[EspectadorController::class, 'destroy']);

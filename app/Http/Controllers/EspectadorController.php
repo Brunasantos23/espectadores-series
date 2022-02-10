@@ -98,6 +98,9 @@ class EspectadorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $espectadores = $this->espectadores->find($id);
+        $deleted = $espectadores->delete();
+        return $deleted;
+
     }
 }
