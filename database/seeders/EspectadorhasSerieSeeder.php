@@ -17,10 +17,16 @@ class EspectadorhasSerieSeeder extends Seeder
     {
         DB::table('espectador_has_series')->insert([
             'serie_id' => 1,
-            'espectador_id' => 4,
+            'espectador_id' => 1,
             'created_at' =>'2022-01-28 9',
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('espectador_has_series')->insert([
+            'serie_id' => 2,
+            'espectador_id' => 2,
+            'created_at' =>'2022-02-08 8:30',
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }
