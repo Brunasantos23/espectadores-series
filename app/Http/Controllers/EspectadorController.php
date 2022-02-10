@@ -78,7 +78,8 @@ class EspectadorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $espectadores = $this->espectadores->find($id);
+        return view('espectadores.form', compact('espectadores'));
     }
 
     /**
