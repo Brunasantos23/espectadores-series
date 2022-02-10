@@ -83,32 +83,6 @@ class Serie extends Model
 
     }
 
-    /**
-     * Set the status's status.
-     *
-     * @param  int  $value
-     * @return void
-     */
-    public function setStatusAttribute($value){
-        if(isset($value)){
-            $this->attributes['status_id'] = Status::where('id', $value)->first()->id;
-        }
-
-    }
-
-    /**
-     * Set the servico's nome.
-     *
-     * @param  int  $value
-     * @return void
-     */
-
-    public function setServicoAttribute($value){
-        if(isset($value)){
-            $this->attributes['servico_streaming_id'] = ServicoStreming::where('id', $value)->first()->id;
-        }
-
-    }
 
     /**
      * Get the status that owns the status.

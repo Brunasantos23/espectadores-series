@@ -16,6 +16,8 @@ class StatusController extends Controller
        $teste = Serie::find(1);
     //    dd($teste);
        return view('teste', compact('teste'));
+
+       //dd(Serie::find(2)->status,Serie::find(1)->espectador,Serie::find(1)->servico);
     }
 
     public function teste2(){
@@ -25,15 +27,14 @@ class StatusController extends Controller
     }
 
     public function teste3(){
-        $teste = ServicoStreming::find(1);
+        $teste = ServicoStreming::find(1)->getSerieAttribute()->first()->created_at;
         return view('teste', compact('teste'));
     }
 
     public function teste4(){
-        //dd(Serie::find(2)->status,Serie::find(1)->espectador,Serie::find(1)->servico);
-        $serie = Serie::find(1);
-        $serie->nome = 'tvd';
-        dd($serie->nome);
+
+        $teste = Status::find(1);
+        return view('teste', compact('teste'));
 
 
     }

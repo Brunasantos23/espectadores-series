@@ -23,6 +23,22 @@ class Status extends Model
      */
     protected $guarded = [];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+
+    ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+
+    protected $appends = [
+
+    ];
+
 
     /**
      * Get the serie's .
