@@ -30,3 +30,5 @@ Route::get('teste3',[StatusController::class, 'teste3']);
 Route::get('teste4',[StatusController::class, 'teste4']);
 
 Route::get('index',[EspectadorController::class, 'index']);
+
+Route::get('show/{id}',[EspectadorController::class, 'show']);

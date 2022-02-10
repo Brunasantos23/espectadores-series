@@ -63,7 +63,8 @@ class EspectadorController extends Controller
      */
     public function show($id)
     {
-        //
+        $espectadores = $this->espectadores->find($id);
+        return $espectadores;
     }
 
     /**
