@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\EspectadorController;
 
 
 
@@ -27,3 +28,5 @@ Route::get('teste2',[StatusController::class, 'teste2']);
 Route::get('teste3',[StatusController::class, 'teste3']);
 
 Route::get('teste4',[StatusController::class, 'teste4']);
+
+Route::get('index',[EspectadorController::class, 'index']);
