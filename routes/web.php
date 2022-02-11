@@ -17,29 +17,18 @@ use App\Http\Controllers\EspectadorController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[EspectadorController::class, 'index'])->name('espectador.index');
 
-Route::get('teste',[StatusController::class, 'teste']);
+Route::get('/create',[EspectadorController::class, 'create'])->name('espectador.create');
 
-Route::get('teste2',[StatusController::class, 'teste2']);
+Route::post('/create',[EspectadorController::class, 'store'])->name('espectador.store');
 
-Route::get('teste3',[StatusController::class, 'teste3']);
+Route::match(array('PUT','PATCH'),'update/{id}',[EspectadorController::class, 'update'])->name('espectador.update');
 
-Route::get('teste4',[StatusController::class, 'teste4']);
+Route::get('/show/{id}',[EspectadorController::class, 'show'])->name('espectador.show');
 
-Route::get('index',[EspectadorController::class, 'index'])->name('espectador.index');
+Route::get('/edit/{id}',[EspectadorController::class, 'edit'])->name('espectador.edit');
 
-Route::get('show/{id}',[EspectadorController::class, 'show'])->name('espectador.show');
+Route::delete('/destroy/{id}',[EspectadorController::class, 'destroy'])->name('espectador.destroy');
 
-Route::delete('destroy/{id}',[EspectadorController::class, 'destroy'])->name('espectador.destroy');
-
-Route::get('form',[EspectadorController::class, 'create']);
-
-Route::get('form/{id}',[EspectadorController::class, 'edit']);
-
-Route::post('store',[EspectadorController::class, 'store'])->name('espectador.store');
-
-Route::put('update/{id}',[EspectadorController::class, 'update'])->name('espectador.update');
 
