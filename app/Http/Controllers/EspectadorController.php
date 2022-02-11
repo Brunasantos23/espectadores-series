@@ -35,6 +35,7 @@ class EspectadorController extends Controller
      public function index()
     {
         $espectadores = $this->espectadores->all();
+
         return view('espectadores.index', compact('espectadores'));
 
 
@@ -63,7 +64,11 @@ class EspectadorController extends Controller
     {
        $espectador = $this->espectadores->create(array(
            'nome'=>$request->nome ,
-           'idade'=>$request->idade));
+           'idade'=>$request->idade,
+
+        ));
+        $espectador->serie = $request->serie;
+
            return redirect()->route('espectador.show',$espectador->id);
 
     }
@@ -78,8 +83,9 @@ class EspectadorController extends Controller
     {
         $espectador = $this->espectadores->find($id);
         $form = 'disabled';
+        $series = $this->series;
 
-        return view('espectadores.form', compact('espectador','form'));
+        return view('espectadores.form', compact('espectador','form','series'));
 
     }
 
@@ -108,7 +114,9 @@ class EspectadorController extends Controller
 
         $espectador = $espectador->update(array(
             'nome'=>$request->nome ,
-            'idade'=>$request->idade));
+            'idade'=>$request->idade,
+            'serie' =>$request->serie,
+        ));
 
         return redirect()->route('espectador.show',$id);
 
@@ -124,16 +132,10 @@ class EspectadorController extends Controller
     public function destroy($id)
     {
         $espectador = $this->espectadores->find($id);
+        $espectador->serieRelationship()->detach();
         $deleted = $espectador->delete();
         return redirect()->route('espectador.index');
 
     }
 
-    public function remover($id)
-    {
-        $espectador = $this->espectadores->find($id);
-        $deleted = $espectador->delete();
-        return redirect()->route('espectador.index');
-
-    }
 }

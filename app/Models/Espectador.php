@@ -53,7 +53,7 @@ class Espectador extends Model
 
     protected $appends = [
         'serie',
-        
+
 
     ];
 
@@ -70,6 +70,11 @@ class Espectador extends Model
     public function getServicoAttribute(){
         return $this->servicoRelationship;
     }
+
+    public function setSerieAttribute($value){
+        $this->serieRelationship()->sync($value);
+    }
+
 
      /**
      * Get the servico that owns the servico.
