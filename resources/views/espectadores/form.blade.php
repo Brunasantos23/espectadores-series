@@ -27,5 +27,15 @@
 
          </form>
 
+         @if(isset($espectador))
+            <form  method="POST" action="{{ route('espectador.destroy',$espectador->id) }}" name="form">
+                @method('DELETE')
+                @csrf
+
+              <input type="submit" value="Deletar">
+            </form>
+         @endif
+
+
     </body>
 </html>

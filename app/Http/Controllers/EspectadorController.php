@@ -116,7 +116,7 @@ class EspectadorController extends Controller
     {
         $espectador = $this->espectadores->find($id);
         $deleted = $espectador->delete();
-        return $deleted;
+        return redirect()->route('espectador.index');
 
     }
 }

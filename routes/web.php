@@ -29,11 +29,11 @@ Route::get('teste3',[StatusController::class, 'teste3']);
 
 Route::get('teste4',[StatusController::class, 'teste4']);
 
-Route::get('index',[EspectadorController::class, 'index']);
+Route::get('index',[EspectadorController::class, 'index'])->name('espectador.index');
 
 Route::get('show/{id}',[EspectadorController::class, 'show'])->name('espectador.show');
 
-Route::delete('destroy/{id}',[EspectadorController::class, 'destroy']);
+Route::delete('destroy/{id}',[EspectadorController::class, 'destroy'])->name('espectador.destroy');
 
 Route::get('form',[EspectadorController::class, 'create']);
 
