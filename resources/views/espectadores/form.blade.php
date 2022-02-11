@@ -14,7 +14,7 @@
     <h1>Criação de espectador</h1>
 
     @if(isset($espectador))
-    {!! Form::open(['route' => array('espectador.update'), 'method' => 'PUT', 'name' => 'form'])!!}
+    {!! Form::open(['route' => array('espectador.update',$espectador->id), 'method' => 'PUT', 'name' => 'form'])!!}
     @else
     {!! Form::open(['route' => array('espectador.store'), 'method' => 'POST', 'name' => 'form'])!!}
     @endif
@@ -26,39 +26,20 @@
     {!!Form::number('idade',   isset($espectador) ? $espectador->idade : null, ['class' => 'form-control','placeholder' => 'Somente Números',  $form??null])!!}
 
     {!!Form::label('serie', 'Série:', ['class' => 'form-check-label'])!!}
-    {!!Form::select('serie',$series , isset($espectador) ? 'Confira as séries abaixo:' : null,['class' => 'form-control', $form??null, 'placeholder' => 'Escolha uma série'])!!}
+    {!!Form::select('serie',$series , null,['class' => 'form-control', $form??null, 'placeholder' => 'Escolha uma série'])!!}
 
     {!! Form::submit('Enviar', ['class' => 'btn btn-success', $form??null]); !!}
 
     {!! Form::close() !!}
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-             <th scope="col">Lista de Séries</th>
-            </tr>
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Streaming</th>
-            <th scope="col">Temporadas</th>
-            <th scope="col">Gênero</th>
-            <th scope="col">Status</th>
-            <th scope="col">Ação</th>
-          </tr>
-        </thead>
-        <tbody>
-            @foreach ($espectador->series as $serie)
-            <tr>
-                <th scope="row">{{$serie->nome}}</th>
-                <td>{{$serie->}}</td>
-                <td>{{$serie->quant_temp}}</td>
-                <td>{{$serie->genero}}</td>
-                <td>{{$serie->status}}</td>
-                <td><a type="button" class="btn btn-primary" href="{{route('espectadores.destroy',$->id)}}">Excluir</a></td>
-              </tr>
-            @endforeach
-        </tbody>
-      </table>
+    @if (isset($espectador))
+        {!! Form::open(['route' => array('espectador.destroy', $espectador->id), 'method' => 'DELETE', 'name' => 'form'])!!}
+            {!! Form::submit('Excluir', ['class' => 'btn btn-danger']); !!}
+        {!! Form::close() !!}
+    @endif
+
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
