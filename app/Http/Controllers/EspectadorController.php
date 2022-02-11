@@ -70,8 +70,8 @@ class EspectadorController extends Controller
      */
     public function show($id)
     {
-        $espectadores = $this->espectadores->find($id);
-        return view('espectadores.form', compact('espectadores')); 
+        $espectador = $this->espectadores->find($id);
+        return view('espectadores.form', compact('espectador'));
     }
 
     /**
@@ -82,8 +82,8 @@ class EspectadorController extends Controller
      */
     public function edit($id)
     {
-        $espectadores = $this->espectadores->find($id);
-        return view('espectadores.form', compact('espectadores'));
+        $espectador = $this->espectadores->find($id);
+        return view('espectadores.form', compact('espectador'));
     }
 
     /**
@@ -95,7 +95,15 @@ class EspectadorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $espectador = $this->espectadores->find($id);
+
+        $espectador = $espectador->update(array(
+            'nome'=>$request->nome ,
+            'idade'=>$request->idade));
+
+        return redirect()->route('espectador.show',$id);
+
+
     }
 
     /**
@@ -106,8 +114,8 @@ class EspectadorController extends Controller
      */
     public function destroy($id)
     {
-        $espectadores = $this->espectadores->find($id);
-        $deleted = $espectadores->delete();
+        $espectador = $this->espectadores->find($id);
+        $deleted = $espectador->delete();
         return $deleted;
 
     }

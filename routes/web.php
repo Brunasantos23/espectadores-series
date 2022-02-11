@@ -39,6 +39,7 @@ Route::get('form',[EspectadorController::class, 'create']);
 
 Route::get('form/{id}',[EspectadorController::class, 'edit']);
 
-Route::get('form/{id}',[EspectadorController::class, 'edit']);
-
 Route::post('store',[EspectadorController::class, 'store'])->name('espectador.store');
+
+Route::put('update/{id}',[EspectadorController::class, 'update'])->name('espectador.update');
+
