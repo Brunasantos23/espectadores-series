@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Espectador;
+use App\Models\Serie;
+use App\Models\Converters;
+
 
 class EspectadorController extends Controller
 {
@@ -19,6 +22,8 @@ class EspectadorController extends Controller
      */
     public function __construct(Espectador $espectadores){
         $this->espectadores = $espectadores;
+        $this->series = Converters::convert_object_to_array(Serie::all(),'id','nome');
+
 
     }
 
@@ -43,7 +48,8 @@ class EspectadorController extends Controller
      */
     public function create()
     {
-        return view('espectadores.form');
+        $series = $this->series;
+        return view('espectadores.form',compact('series'));
 
     }
 
@@ -71,7 +77,10 @@ class EspectadorController extends Controller
     public function show($id)
     {
         $espectador = $this->espectadores->find($id);
-        return view('espectadores.form', compact('espectador'));
+        $form = 'disabled';
+
+        return view('espectadores.form', compact('espectador','form'));
+
     }
 
     /**
@@ -113,6 +122,14 @@ class EspectadorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        $espectador = $this->espectadores->find($id);
+        $deleted = $espectador->delete();
+        return redirect()->route('espectador.index');
+
+    }
+
+    public function remover($id)
     {
         $espectador = $this->espectadores->find($id);
         $deleted = $espectador->delete();
