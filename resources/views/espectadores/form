@@ -68,3 +68,11 @@
             @endforeach
         </tbody>
       </table>
+
+
+      <button id="edit" type="button" class="btn btn-info" >
+            vai
+        </button>
+        <button id='salvar' type="button" class="btn btn-warning" data-toggle="modal" >
+            Salvar
+        </button>

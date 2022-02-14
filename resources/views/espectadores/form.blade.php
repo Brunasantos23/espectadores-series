@@ -7,16 +7,17 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
 
-    <title>Criação de espectador</title>
-  </head>
+    <title>Espectador</title>
+ </head>
   <body>
-    <h1>Criação de espectador</h1>
+    <h1>Espectador</h1>
 
     @if(isset($espectador))
-    {!! Form::open(['route' => array('espectador.update',$espectador->id), 'method' => 'PUT', 'name' => 'form'])!!}
+     {!! Form::open(['route' => array('espectador.update',$espectador->id), 'method' => 'PUT', 'name' => 'form'])!!}
     @else
-    {!! Form::open(['route' => array('espectador.store'), 'method' => 'POST', 'name' => 'form'])!!}
+     {!! Form::open(['route' => array('espectador.store'), 'method' => 'POST', 'name' => 'form'])!!}
     @endif
 
     {!!Form::label('nome', 'Nome:', ['class' => 'form-check-label'])!!}
@@ -28,16 +29,21 @@
     {!!Form::label('serie', 'Série:', ['class' => 'form-check-label'])!!}
     {!!Form::select('serie',$series , null,['class' => 'form-control', $form??null, 'placeholder' => 'Escolha uma série'])!!}
 
-    {!! Form::submit('Enviar', ['class' => 'btn btn-success', $form??null]); !!}
+    <div class="input-group">
+        <span class="input-group-btn">
+            {!! Form::submit('Enviar', ['class' => 'btn btn-success margem', $form??null]); !!}
 
-    {!! Form::close() !!}
+            {!! Form::close() !!}
+        </span>
 
-    @if (isset($espectador))
-        {!! Form::open(['route' => array('espectador.destroy', $espectador->id), 'method' => 'DELETE', 'name' => 'form'])!!}
-            {!! Form::submit('Excluir', ['class' => 'btn btn-danger']); !!}
-        {!! Form::close() !!}
-    @endif
-
+        <span class="input-group-btn">
+            @if (isset($espectador))
+                {!! Form::open(['route' => array('espectador.destroy', $espectador->id), 'method' => 'DELETE', 'name' => 'form'])!!}
+                    {!! Form::submit('Excluir', ['class' => 'btn btn-danger margem']); !!}
+                {!! Form::close() !!}
+            @endif
+        </span>
+    </div>
 
 
 

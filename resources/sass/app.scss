@@ -1,5 +1,9 @@
-$cor-amarelo:rgb(230, 219, 73);
-.btn-success {
-    color:$cor-amarelo;
-    width: 150px;
- }
+$cor-branco:rgb(252, 251, 248);
+
+.btn.margem{
+    margin: 15px 10px;
+     width: 150px;
+}
+ label{
+    margin: 15px 10px;
+}
