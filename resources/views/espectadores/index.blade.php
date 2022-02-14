@@ -10,21 +10,21 @@
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
 
     <title>Espectadores</title>
+
   </head>
-  <body>
-    <table class="table">
+  <body >
+    <table class="table" id="espectadores">
         <thead>
             <tr>
                 <th scope="col">Espectadores</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"><a type="button" class="btn btn-success" href="{{route('espectador.create')}}">Criar Espectador</a></th>
-             </tr>
+            </tr>
+    <tr>
 
-            <tr>
-
-     <div class="container-fluid">
-        <table class="table">
+     <div  class="container-fluid"   >
+        <table class="table" >
             <thead>
               <tr>
                 <th scope="col">Nome</th>
