@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" lang="pt-br"/>
+    </head>
+    <body>
+
+        @if(isset($espectador))
+           <form method="POST" action="{{route('espectador.update',$espectador->id)}}" accept-charset="UTF-8" name="form">
+            @method('PUT')
+        @else
+           <form  method="POST" action="{{ route('espectador.store') }}" name="form">
+        @endif
+            @csrf
+
+             <div>
+
+                 <label for="nome">Nome:</label>
+                 <input type="text"  value="{{$espectador->nome??''}}" id="nome" name="nome"><br/>
+
+                 <label for="idade">Idade:</label>
+                 <input type="int" value="{{$espectador->idade??''}}" id="idade" name="idade"><br/>
+
+                 <input type="submit" value="Enviar">
+
+             </div>
+
+         </form>
+
+         @if(isset($espectador))
+            <form  method="POST" action="{{ route('espectador.destroy',$espectador->id) }}" name="form">
+                @method('DELETE')
+                @csrf
+
+              <input type="submit" value="Deletar">
+            </form>
+         @endif
+
+
+    </body>
+</html>
+
+
+      <table class="table table-striped">
+        <thead>
+            <tr>
+             <th scope="col">Lista de Séries</th>
+            </tr>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Streaming</th>
+            <th scope="col">Temporadas</th>
+            <th scope="col">Gênero</th>
+            <th scope="col">Status</th>
+            <th scope="col">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($espectador->serie as $serie)
+            <tr>
+                <th scope="row">{{$serie->nome}}</th>
+                <td>{{$serie->servico->first()->nome}}</td>
+                <td>{{$serie->quant_temp}}</td>
+                <td>{{$serie->genero}}</td>
+                <td>{{$serie->status}}</td>
+                <td><a type="button" class="btn btn-primary" href="{{route('espectador.destroy',$serie->id)}}">Excluir</a></td>
+              </tr>
+            @endforeach
+        </tbody>
+      </table>
+
+
+      <button id="edit" type="button" class="btn btn-info" >
+            vai
+        </button>
+        <button id='salvar' type="button" class="btn btn-warning" data-toggle="modal" >
+            Salvar
+        </button>
