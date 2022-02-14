@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Espectador;
+use App\Models\Serie;
+use App\Models\Converters;
+
 
 class EspectadorController extends Controller
 {
@@ -19,6 +22,8 @@ class EspectadorController extends Controller
      */
     public function __construct(Espectador $espectadores){
         $this->espectadores = $espectadores;
+        $this->series = Converters::convert_object_to_array(Serie::all(),'id','nome');
+
 
     }
 
@@ -30,6 +35,7 @@ class EspectadorController extends Controller
      public function index()
     {
         $espectadores = $this->espectadores->all();
+
         return view('espectadores.index', compact('espectadores'));
 
 
@@ -43,7 +49,8 @@ class EspectadorController extends Controller
      */
     public function create()
     {
-        return view('espectadores.form');
+        $series = $this->series;
+        return view('espectadores.form',compact('series'));
 
     }
 
@@ -57,7 +64,11 @@ class EspectadorController extends Controller
     {
        $espectador = $this->espectadores->create(array(
            'nome'=>$request->nome ,
-           'idade'=>$request->idade));
+           'idade'=>$request->idade,
+
+        ));
+        $espectador->serie = $request->serie;
+
            return redirect()->route('espectador.show',$espectador->id);
 
     }
@@ -71,7 +82,11 @@ class EspectadorController extends Controller
     public function show($id)
     {
         $espectador = $this->espectadores->find($id);
-        return view('espectadores.form', compact('espectador'));
+        $form = 'disabled';
+        $series = $this->series;
+
+        return view('espectadores.form', compact('espectador','form','series'));
+
     }
 
     /**
@@ -99,7 +114,9 @@ class EspectadorController extends Controller
 
         $espectador = $espectador->update(array(
             'nome'=>$request->nome ,
-            'idade'=>$request->idade));
+            'idade'=>$request->idade,
+            'serie' =>$request->serie,
+        ));
 
         return redirect()->route('espectador.show',$id);
 
@@ -115,8 +132,10 @@ class EspectadorController extends Controller
     public function destroy($id)
     {
         $espectador = $this->espectadores->find($id);
+        $espectador->serieRelationship()->detach();
         $deleted = $espectador->delete();
         return redirect()->route('espectador.index');
 
     }
+
 }
